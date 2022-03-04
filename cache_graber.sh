@@ -11,6 +11,7 @@ changed=0
 while read -r line; do
         echo "$line" >> checked_links
         wget -q -O r5apex.dxvk-cache $line > /dev/null 2>&1
+        sleep 1
         if [ "$current_shader" -lt "$(wc -c r5apex.dxvk-cache | cut -d' ' -f 1)" ]
         then
                 if [ "$(ps -e | grep -c steam)" -ne 0 ]
