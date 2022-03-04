@@ -5,7 +5,6 @@ current_shader=$(wc -c ~/.steam/steam/steamapps/shadercache/1172470/DXVK_state_c
 links_to_check=$(diff checked_links temp.links | grep ">" | sed 's/> //g')
 shaders_location="$HOME/.steam/steam/steamapps/shadercache/1172470/DXVK_state_cache/"
 echo $links_to_check | sed 's/ /\n/g' | uniq > links_to_check
-[ ! -f ./links_to_check ] && touch links_to_check
 
 changed=0
 while read -r line; do
@@ -37,6 +36,6 @@ case $changed in
 		;;
 esac
 
-rm temp.links
+rm temp.links links_to_check 
 [ ! -f r5apex.dxvk-cache ] && rm r5apex.dxvk-cache
 
