@@ -1,6 +1,6 @@
 #!/bin/bash
 [ ! -f ./checked_links ] && touch checked_links
-curl -A "Mozila/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/81.0" -s https://old.reddit.com/r/linux_gaming/comments/t57lgq/apex_legends_on_linux_support_megathread/ | grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*" | grep "cdn.dis" | grep "r5apex.dxvk-cache" > temp.links
+curl -A "Mozila/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/81.0" -s https://old.reddit.com/r/linux_gaming/comments/t5xrho/dxvk_state_cache_for_fixing_stutter_in_apex/ | grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*" | grep "cdn.dis\|oshi.at" | grep "r5apex.dxvk-cache" > temp.links
 current_shader=$(wc -c ~/.steam/steam/steamapps/shadercache/1172470/DXVK_state_cache/r5apex.dxvk-cache | cut -d' ' -f 1)
 links_to_check=$(diff checked_links temp.links | grep ">" | sed 's/> //g')
 shaders_location="$HOME/.steam/steam/steamapps/shadercache/1172470/DXVK_state_cache/"
