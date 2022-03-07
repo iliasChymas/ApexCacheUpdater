@@ -18,5 +18,9 @@ fi
 
 wget -q -O output.dxvk-cache $url > /dev/null 2>&1
 sleep .5
-./dxvk-cache-tool $current_shader "output.dxvk-cache"
-rm $current_shader && mv output.dxvk-cache $current_shader 
+if [  -f "$current_shader" ]
+then
+	./dxvk-cache-tool "$current_shader" "output.dxvk-cache"
+	rm "$current_shader"
+fi
+mv output.dxvk-cache "$current_shader"
