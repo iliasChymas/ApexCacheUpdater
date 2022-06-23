@@ -16,11 +16,13 @@ then
         pkill steam
         sleep 3
     fi
-    wget -q -O output.dxvk-cache $url > /dev/null 2>&1
+    wget -q -O output.dxvk-cache.zst $url > /dev/null 2>&1
+	unzstd output.dxvk-cache.zst
     sleep .5
     ./dxvk-cache-tool "$search_shader" "output.dxvk-cache"
     rm "$search_shader"
     mv output.dxvk-cache "$search_shader"
+	rm output.dxvk-cache.zst
 else
     echo "Script coud not locate r5apex.dxvk-cache"
 fi
